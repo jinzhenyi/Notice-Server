@@ -1,4 +1,13 @@
 # Notice Server
+
+# 项目未经完全测试
+
+> **⚠️ 实验性项目**  
+> 本项目未经完整测试，可能存在未知缺陷或安全风险。**请勿在生产环境中使用**。
+
+![Status: Experimental](https://img.shields.io/badge/Status-Experimental-red)
+![Test Coverage: None](https://img.shields.io/badge/Tests-0%25-orange)
+
 ## 功能特点
 - **单一管理员账户**：用户名和密码通过环境变量配置（密码 SHA-256 哈希）
 - **出站渠道管理**：支持钉钉、Bark、Resend、微信公众号测试号、Server酱、自定义 Webhook，可自定义渠道 ID（数字）
