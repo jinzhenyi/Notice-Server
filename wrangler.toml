@@ -1,7 +1,7 @@
 # Cloudflare Workers 配置文件（wrangler.toml）
 
 # 应用名称，用于标识和部署
-name = "notice"
+name = "Notice-Server"
 
 # 入口文件：Worker 的主 TypeScript 文件
 main = "src/index.ts"
