@@ -1,0 +1,44 @@
+# Cloudflare Workers 配置文件（wrangler.toml）
+
+# 应用名称，用于标识和部署
+name = "notice"
+
+# 入口文件：Worker 的主 TypeScript 文件
+main = "src/index.ts"
+
+# 兼容性日期：确保运行时 API 行为与指定日期一致
+compatibility_date = "2026-06-14"
+
+# --- D1 数据库绑定 ---
+# 在 Worker 代码中通过 env.DB 访问
+[[d1_databases]]
+binding = "DB"                 # 绑定名称
+database_name = "notify-db"    # D1 数据库逻辑名称（在 Cloudflare 控制台创建）
+database_id = ""               # 数据库实际 ID（需填写，从控制台获取）
+
+# --- KV 命名空间绑定 ---
+# 用于存储会话数据，代码中通过 env.SESSIONS 访问
+[[kv_namespaces]]
+binding = "SESSIONS"           # 绑定名称
+id = ""                        # KV 命名空间 ID（需在控制台创建后填写）
+
+# --- 环境变量（机密配置）---
+[vars]
+# 登录用户名（可自定义）
+USERNAME = ""
+
+# 密码哈希值：⚠️ 请不要填写明文密码！
+# 需使用安全的哈希算法（如 bcrypt、scrypt 或 PBKDF2）预先计算。
+# 示例（Node.js 中 bcrypt）：
+#   const bcrypt = require('bcrypt');
+#   const hash = bcrypt.hashSync('你的明文密码', 10);
+# 然后复制生成的哈希字符串到这里。
+PASSWORD_HASH = ""
+
+# 会话加密密钥：⚠️ 必须足够复杂且保密！
+# 建议生成 32 字节以上的随机字符串，可使用以下方式：
+#   - 命令行：openssl rand -base64 32
+#   - 在线密码生成器（本地生成后复制）
+#   示例：pL9!mKq2@Rf5#Wn8$Vb7^Cx4&Yz3*As6
+# 切勿使用弱密码或字典词！
+SESSION_SECRET = ""
